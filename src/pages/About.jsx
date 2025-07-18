@@ -24,19 +24,19 @@ export default function About() {
       name: "Cedric Hill",
       role: "Founder",
       image: cedric,
-      bio: "Visionary leader driving Cirvia's mission to empower parents with complete visibility and control over their children's digital interactions. With extensive experience in AI and child safety technology, Cedric is committed to building COPPA-compliant solutions that protect children while giving parents the transparency they need."
+      bio: "Visionary leader driving Cirvia's mission to empower parents with complete visibility and control over their children's digital interactions. With extensive experience in child safety technology, Cedric is committed to building COPPA-compliant solutions that protect children while giving parents the transparency they need."
     },
     {
       name: "Shem Collier",
       role: "President",
       image: shem,
-      bio: "Strategic leader overseeing Cirvia's operations and growth initiatives. Shem brings deep expertise in scaling technology companies and building partnerships with platforms that prioritize child safety. Focused on ensuring Parental AI reaches families who need it most."
+      bio: "Strategic leader overseeing Cirvia's operations and growth initiatives. Shem brings deep expertise in scaling technology and building partnerships with platforms that prioritize child safety. Focused on ensuring Parental AI reaches families who need it most."
     },
     {
       name: "Isaac Barnes",
       role: "Partner",
       image: isaac,
-      bio: "Technology and business development partner driving innovation in AI-powered child protection. Isaac specializes in developing cutting-edge threat detection algorithms and building strategic partnerships with gaming platforms, social media companies, and educational technology providers."
+      bio: "Technology and business development partner driving innovation in AI-powered child protection. Isaac specializes in building strategic partnerships with platforms, companies, and governments to expand the reach of Parental AI. His focus is on creating solutions that empower parents while ensuring compliance with child safety regulations."
     }
   ];
 
