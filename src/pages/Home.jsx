@@ -18,8 +18,10 @@ import {
   MapPin,
   ExternalLink
 } from "lucide-react";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
-export default function EnhancedCirviaLandingPage() {
+export default function Home() {
   const [expandedFaq, setExpandedFaq] = useState(null);
   const [formData, setFormData] = useState({
     name: '',
@@ -28,6 +30,8 @@ export default function EnhancedCirviaLandingPage() {
     message: '',
     integrationType: 'general'
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState('');
 
   const handleInputChange = (e) => {
     setFormData({
@@ -36,16 +40,50 @@ export default function EnhancedCirviaLandingPage() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission
-    console.log('Form submitted:', formData);
-    alert('Thank you for your message! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', company: '', message: '', integrationType: 'general' });
+    setIsSubmitting(true);
+    setSubmitMessage('');
+
+    try {
+      const response = await fetch('https://formspree.io/f/mrblblql', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitMessage('Thank you for your message! We\'ll get back to you soon.');
+        setFormData({ name: '', email: '', company: '', message: '', integrationType: 'general' });
+      } else {
+        setSubmitMessage('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setSubmitMessage('Something went wrong. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const toggleFaq = (index) => {
     setExpandedFaq(expandedFaq === index ? null : index);
+  };
+
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleGetStarted = () => {
+    scrollToSection('contact');
+  };
+
+  const handleWatchDemo = () => {
+    scrollToSection('video-demo');
   };
 
   const faqs = [
@@ -105,30 +143,7 @@ export default function EnhancedCirviaLandingPage() {
 
   return (
     <div className="min-h-screen bg-[#0D1B2A] text-white">
-      {/* Enhanced Header */}
-      <header className="p-6 flex justify-between items-center shadow-md bg-[#0D1B2A] border-b border-slate-800 sticky top-0 z-50">
-        <div className="flex items-center space-x-2">
-          <img src="/cirvia-logo.png" alt="Cirvia Logo" className="h-10 w-auto" />
-        </div>
-        <nav className="hidden md:flex space-x-6">
-          <a href="#about" className="hover:underline text-slate-200 transition-colors">About</a>
-          <a href="#product" className="hover:underline text-slate-200 transition-colors">Parental AI</a>
-          <a href="#how-it-works" className="hover:underline text-slate-200 transition-colors">How It Works</a>
-          <a href="#pricing" className="hover:underline text-slate-200 transition-colors">Pricing</a>
-          <a href="https://docs.cirvia.co" target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-200 transition-colors flex items-center">
-            Documentation <ExternalLink className="ml-1 h-4 w-4" />
-          </a>
-          <a href="#contact" className="hover:underline text-slate-200 transition-colors">Contact</a>
-        </nav>
-        <div className="flex space-x-3">
-          <a href="https://dashboard.cirvia.co" target="_blank" rel="noopener noreferrer" className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center">
-            Dashboard <ExternalLink className="ml-1 h-4 w-4" />
-          </a>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
-            Get Started
-          </button>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="py-20 text-center px-4 md:px-20">
@@ -142,10 +157,16 @@ export default function EnhancedCirviaLandingPage() {
           Cirvia empowers parents with complete visibility into their children's digital interactions. Our COPPA and CIPRA compliant Parental AI gives parents the tools they need to protect their children while ensuring full transparency and control.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg shadow-lg transition-colors flex items-center justify-center">
+          <button 
+            onClick={handleGetStarted}
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg shadow-lg transition-colors flex items-center justify-center"
+          >
             Get Started Today <ArrowRight className="ml-2 h-5 w-5" />
           </button>
-          <button className="bg-slate-100 hover:bg-white text-[#0D1B2A] px-8 py-4 rounded-lg text-lg shadow-lg transition-colors">
+          <button 
+            onClick={handleWatchDemo}
+            className="bg-slate-100 hover:bg-white text-[#0D1B2A] px-8 py-4 rounded-lg text-lg shadow-lg transition-colors"
+          >
             Watch Demo
           </button>
         </div>
@@ -250,7 +271,7 @@ export default function EnhancedCirviaLandingPage() {
       </section>
 
       {/* Video Demo Section */}
-      <section className="bg-white text-[#0D1B2A] py-16 px-4 md:px-20">
+      <section id="video-demo" className="bg-white text-[#0D1B2A] py-16 px-4 md:px-20">
         <h2 className="text-4xl font-bold text-center mb-12">See Parental AI in Action</h2>
         <div className="flex justify-center">
           <div className="w-full max-w-4xl aspect-video">
@@ -416,10 +437,17 @@ export default function EnhancedCirviaLandingPage() {
               </div>
               <button
                 type="submit"
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-md transition-colors flex items-center justify-center"
+                disabled={isSubmitting}
+                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-400 text-white py-3 rounded-md transition-colors flex items-center justify-center"
               >
-                Send Message <Send className="ml-2 h-4 w-4" />
+                {isSubmitting ? 'Sending...' : 'Send Message'} 
+                {!isSubmitting && <Send className="ml-2 h-4 w-4" />}
               </button>
+              {submitMessage && (
+                <div className={`text-center p-3 rounded-md ${submitMessage.includes('Thank you') ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+                  {submitMessage}
+                </div>
+              )}
             </form>
           </div>
 
@@ -464,81 +492,7 @@ export default function EnhancedCirviaLandingPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0D1B2A] text-white py-12 px-4 md:px-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <img src="/cirvia-logo.png" alt="Cirvia Logo" className="h-12 w-auto mb-4" />
-              <p className="text-slate-300 mb-4">
-                Empowering parents with complete visibility and COPPA-compliant protection for their children's digital interactions.
-              </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-slate-300 hover:text-white transition-colors">
-                  <span className="sr-only">Twitter</span>
-                  🐦
-                </a>
-                <a href="#" className="text-slate-300 hover:text-white transition-colors">
-                  <span className="sr-only">LinkedIn</span>
-                  💼
-                </a>
-                <a href="#" className="text-slate-300 hover:text-white transition-colors">
-                  <span className="sr-only">GitHub</span>
-                  💻
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Product</h4>
-              <ul className="space-y-2">
-                <li><a href="#product" className="text-slate-300 hover:text-white transition-colors">Parental AI</a></li>
-                <li><a href="#how-it-works" className="text-slate-300 hover:text-white transition-colors">How It Works</a></li>
-                <li><a href="#pricing" className="text-slate-300 hover:text-white transition-colors">Pricing</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Integrations</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2">
-                <li><a href="https://docs.cirvia.co" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">API Reference</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Case Studies</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Blog</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#contact" className="text-slate-300 hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">COPPA Compliance</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-slate-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-slate-300 text-sm">
-              © 2025 Cirvia. All rights reserved. COPPA & CIPRA Compliant.
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="https://dashboard.cirvia.co" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors text-sm">
-                Dashboard
-              </a>
-              <a href="https://docs.cirvia.co" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors text-sm">
-                Documentation
-              </a>
-              <a href="#contact" className="text-slate-300 hover:text-white transition-colors text-sm">
-                Support
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
