@@ -24,7 +24,7 @@ export default function About() {
       name: "Cedric Hill",
       role: "Founder",
       image: cedric,
-      bio: "Visionary leader driving Cirvia's mission to empower parents with complete visibility and control over their children's digital interactions. With extensive experience in child safety technology, Cedric is committed to building COPPA-compliant solutions that protect children while giving parents the transparency they need."
+      bio: "Cedric B. Hill is the Founder and Visionary of Cirvia, a first-of-its-kind AI-powered platform designed to empower parents with full visibility and control over their children’s digital environments. A proud U.S. Marine Corps veteran, seasoned technologist, and award-winning community leader, Cedric brings over two decades of experience in information technology, operations, and mission-driven innovation to his work protecting the next generation."
     },
     {
       name: "Shem Collier",
@@ -34,9 +34,15 @@ export default function About() {
     },
     {
       name: "Isaac Barnes",
-      role: "Partner",
+      role: "Advisory Board Member",
       image: isaac,
       bio: "Technology and business development partner driving innovation in AI-powered child protection. Isaac specializes in building strategic partnerships with platforms, companies, and governments to expand the reach of Parental AI. His focus is on creating solutions that empower parents while ensuring compliance with child safety regulations."
+    },
+    {
+      name: "Ramona M. Tascoe",
+      role: "Various Roles",
+      image: "/placeholder.jpg", // Placeholder for additional team members
+      bio: "Our team includes experts in AI, child safety, and business development who are dedicated to delivering technology that truly empowers parents and protects children online
     }
   ];
 
