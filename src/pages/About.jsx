@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import cedric from '../assets/cedric.jpg';
 import shem from '../assets/shem.jpeg'; 
 import isaac from '../assets/isaac.jpeg';
+import ramon from '../assets/ramon.jpg'; // Placeholder for additional team members
 
 export default function About() {
   const scrollToSection = (sectionId) => {
@@ -40,9 +41,9 @@ export default function About() {
     },
     {
       name: "Ramona M. Tascoe",
-      role: "Various Roles",
-      image: "/placeholder.jpg", // Placeholder for additional team members
-      bio: "Our team includes experts in AI, child safety, and business development who are dedicated to delivering technology that truly empowers parents and protects children online
+      role: "Advisory Board Member",
+      image: ramon,
+      bio: "Ramona M.Tascoe, MD,MHSA, MDiv"
     }
   ];
 
