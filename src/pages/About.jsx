@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import cedric from '../assets/cedric.jpg';
 import shem from '../assets/shem.jpeg'; 
 import isaac from '../assets/isaac.jpeg';
-import ramon from '../assets/ramon.jpg'; // Placeholder for additional team members
+import ramon from '../assets/ramon.jpeg'; // Placeholder for additional team members
 
 export default function About() {
   const scrollToSection = (sectionId) => {
