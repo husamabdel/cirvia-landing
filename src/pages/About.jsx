@@ -25,25 +25,25 @@ export default function About() {
       name: "Cedric Hill",
       role: "Founder",
       image: cedric,
-      bio: "Cedric B. Hill is the Founder and Visionary of Cirvia, a first-of-its-kind AI-powered platform designed to empower parents with full visibility and control over their children’s digital environments. A proud U.S. Marine Corps veteran, seasoned technologist, and award-winning community leader, Cedric brings over two decades of experience in information technology, operations, and mission-driven innovation to his work protecting the next generation."
+      bio: "Cedric B. Hill is the Founder and Visionary of Cirvia, a first-of-its-kind AI-powered platform designed to empower parents with full visibility and control over their children’s digital environments. A proud U.S. Marine Corps veteran, seasoned technologist, and award-winning community leader, Cedric brings over two decades of experience in information technology, operations, and mission-driven innovation to his work protecting the next generation. Born and raised in Philadelphia, Cedric studied Information Technology at Strayer University and has since built a career grounded in real-world execution across both government and enterprise systems. His technical journey spans help desk operations, cybersecurity support, infrastructure troubleshooting, and digital system management—serving organizations including the U.S. Army Research Lab and the U.S. Secret Service. A decorated U.S. Marine Corps Corporal, Cedric served in the Manpower Department at Headquarters Marine Corps (HQMC), where he managed global personnel records, retirement processing, and pay systems. He earned the National Defense Service Medal, Sharpshooter qualifications, and a Gray Belt in MCMAP combat training—core experiences that laid the foundation for Cirvia’s values of honor, respect, and loyalty."
     },
     {
       name: "Shem Collier",
       role: "President",
       image: shem,
-      bio: "Strategic leader overseeing Cirvia's operations and growth initiatives. Shem brings deep expertise in scaling technology and building partnerships with platforms that prioritize child safety. Focused on ensuring Parental AI reaches families who need it most."
+      bio: "Shem R. Collier builds systems that remember. His entry into the technology space began at The Chaplain of the Marine Corps Office, where he served as an Information Systems Coordinator. In that role, he gained early exposure to secure communications, structured environments, and the human weight behind every line of data. It was there that he learned how to manage both information and intention. Over the next two decades, Shem advanced through roles supporting complex infrastructure and digital strategy within federal systems. His work consistently bridged the gap between function and feeling—creating systems that were not only operationally sound, but culturally aware and human-ready. Now, as President of Product Strategy & Systems Integration at a mission-driven product company, Shem leads the development of next-generation technologies focused on protection, resonance, and clarity. His approach is grounded, quiet, and precise—shaping tools that serve people long before they impress them."
     },
     {
       name: "Isaac Barnes",
       role: "Advisory Board Member",
       image: isaac,
-      bio: "Technology and business development partner driving innovation in AI-powered child protection. Isaac specializes in building strategic partnerships with platforms, companies, and governments to expand the reach of Parental AI. His focus is on creating solutions that empower parents while ensuring compliance with child safety regulations."
+      bio: ""
     },
     {
       name: "Ramona M. Tascoe",
       role: "Advisory Board Member",
       image: ramon,
-      bio: "Ramona M.Tascoe, MD,MHSA, MDiv"
+      bio: ""
     }
   ];
 
