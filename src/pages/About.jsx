@@ -40,7 +40,7 @@ export default function About() {
       bio: ""
     },
     {
-      name: "Ramona M. Tascoe",
+      name: "Ramona M. Tascoe, MD,MHSA, MDiv",
       role: "Advisory Board Member",
       image: ramon,
       bio: ""

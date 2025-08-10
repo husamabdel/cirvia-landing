@@ -1,17 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ExternalLink } from 'lucide-react';
+import { ExternalLink, Menu, X } from 'lucide-react';
 
 const Header = () => {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+    // Close mobile menu after clicking
+    setIsMobileMenuOpen(false);
   };
 
   const handleGetStarted = () => {
     scrollToSection('contact');
+  };
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -21,6 +33,8 @@ const Header = () => {
           <img src="/cirvia-logo.png" alt="Cirvia Logo" className="h-10 w-auto" />
         </Link>
       </div>
+      
+      {/* Desktop Navigation */}
       <nav className="hidden md:flex space-x-6">
         <Link to="/about" className="hover:underline text-slate-200 transition-colors">About</Link>
         <button onClick={() => scrollToSection('product')} className="hover:underline text-slate-200 transition-colors">Parental AI</button>
@@ -31,13 +45,117 @@ const Header = () => {
         </a>
         <button onClick={() => scrollToSection('contact')} className="hover:underline text-slate-200 transition-colors">Contact</button>
       </nav>
-      <div className="flex space-x-3">
+
+      {/* Desktop Action Buttons */}
+      <div className="hidden md:flex space-x-3">
         <a href="https://dashboard.cirvia.co" target="_blank" rel="noopener noreferrer" className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center">
           Dashboard <ExternalLink className="ml-1 h-4 w-4" />
         </a>
         <button onClick={handleGetStarted} className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
           Get Started
         </button>
+      </div>
+
+      {/* Mobile Menu Button */}
+      <button
+        onClick={toggleMobileMenu}
+        className="md:hidden text-white p-2"
+        aria-label="Toggle mobile menu"
+      >
+        {isMobileMenuOpen ? (
+          <X className="h-6 w-6" />
+        ) : (
+          <Menu className="h-6 w-6" />
+        )}
+      </button>
+
+      {/* Mobile Menu Overlay */}
+      {isMobileMenuOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden" onClick={closeMobileMenu} />
+      )}
+
+      {/* Mobile Menu */}
+      <div className={`fixed top-0 right-0 h-full w-80 bg-[#0D1B2A] border-l border-slate-800 transform transition-transform duration-300 ease-in-out z-50 md:hidden ${
+        isMobileMenuOpen ? 'translate-x-0' : 'translate-x-full'
+      }`}>
+        <div className="p-6">
+          {/* Mobile Menu Header */}
+          <div className="flex justify-between items-center mb-8">
+            <Link to="/" onClick={closeMobileMenu}>
+              <img src="/cirvia-logo.png" alt="Cirvia Logo" className="h-8 w-auto" />
+            </Link>
+            <button
+              onClick={closeMobileMenu}
+              className="text-white p-2"
+              aria-label="Close mobile menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
+
+          {/* Mobile Navigation Links */}
+          <nav className="space-y-6 mb-8">
+            <Link 
+              to="/about" 
+              onClick={closeMobileMenu}
+              className="block text-slate-200 hover:text-white transition-colors text-lg"
+            >
+              About
+            </Link>
+            <button 
+              onClick={() => scrollToSection('product')} 
+              className="block w-full text-left text-slate-200 hover:text-white transition-colors text-lg"
+            >
+              Parental AI
+            </button>
+            <button 
+              onClick={() => scrollToSection('how-it-works')} 
+              className="block w-full text-left text-slate-200 hover:text-white transition-colors text-lg"
+            >
+              How It Works
+            </button>
+            <button 
+              onClick={() => scrollToSection('pricing')} 
+              className="block w-full text-left text-slate-200 hover:text-white transition-colors text-lg"
+            >
+              Pricing
+            </button>
+            <a 
+              href="https://docs.cirvia.co" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block text-slate-200 hover:text-white transition-colors text-lg flex items-center"
+              onClick={closeMobileMenu}
+            >
+              Documentation <ExternalLink className="ml-2 h-4 w-4" />
+            </a>
+            <button 
+              onClick={() => scrollToSection('contact')} 
+              className="block w-full text-left text-slate-200 hover:text-white transition-colors text-lg"
+            >
+              Contact
+            </button>
+          </nav>
+
+          {/* Mobile Action Buttons */}
+          <div className="space-y-3">
+            <a 
+              href="https://dashboard.cirvia.co" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="block w-full bg-slate-700 hover:bg-slate-600 text-white px-4 py-3 rounded-lg transition-colors text-center"
+              onClick={closeMobileMenu}
+            >
+              Dashboard
+            </a>
+            <button 
+              onClick={handleGetStarted} 
+              className="block w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-3 rounded-lg transition-colors"
+            >
+              Get Started
+            </button>
+          </div>
+        </div>
       </div>
     </header>
   );
