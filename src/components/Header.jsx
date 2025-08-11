@@ -46,18 +46,19 @@ const Header = () => {
       {/* Desktop Navigation */}
       <nav className="hidden md:flex space-x-6">
         {/* This should work - pure Link with no onClick */}
-        <Link 
-          to="/about" 
-          className="hover:underline text-slate-200 transition-colors"
-        >
-          About
-        </Link>
 
         <Link 
           to="/products" 
           className="hover:underline text-slate-200 transition-colors"
         >
           Products
+        </Link>
+
+        <Link 
+          to="/about" 
+          className="hover:underline text-slate-200 transition-colors"
+        >
+          About
         </Link>
         
         <button 
@@ -156,6 +157,13 @@ const Header = () => {
               to="/about" 
               onClick={closeMobileMenu}
               className="block text-slate-200 hover:text-white transition-colors text-lg"
+            >
+              About
+            </Link>
+
+            <Link 
+              to="/about" 
+              className="hover:underline text-slate-200 transition-colors"
             >
               About
             </Link>
