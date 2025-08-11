@@ -6,6 +6,7 @@ import cedric from '../assets/cedric.jpg';
 import shem from '../assets/shem.jpeg'; 
 import isaac from '../assets/isaac.jpeg';
 import ramon from '../assets/ramon.jpeg'; // Placeholder for additional team members
+import { useLocation } from 'react-router-dom';
 
 export default function About() {
   const scrollToSection = (sectionId) => {
