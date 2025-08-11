@@ -52,6 +52,13 @@ const Header = () => {
         >
           About
         </Link>
+
+        <Link 
+          to="/products" 
+          className="hover:underline text-slate-200 transition-colors"
+        >
+          Products
+        </Link>
         
         <button 
           onClick={() => scrollToSection('product')} 

@@ -18,6 +18,8 @@ import {
   MapPin,
   ExternalLink
 } from "lucide-react";
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 export default function EnhancedCirviaLandingPage() {
   const [expandedFaq, setExpandedFaq] = useState(null);
@@ -87,65 +89,17 @@ export default function EnhancedCirviaLandingPage() {
     }
   ];
 
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      role: "Parent & Product Manager",
-      company: "TechCorp",
-      testimonial: "Parental AI gave me the visibility and control I needed as a parent. Finally, I can see what my daughter is experiencing online and protect her from threats while respecting her privacy. The transparency is incredible.",
-      rating: 5
-    },
-    {
-      name: "Mike Chen",
-      role: "CTO",
-      company: "GameStudio Inc",
-      testimonial: "The COPPA compliance and parent visibility features made this a no-brainer for us. Parents love having complete transparency into their children's interactions, and integration was seamless.",
-      rating: 5
-    },
-    {
-      name: "Emily Rodriguez",
-      role: "Community Manager",
-      company: "KidsApp",
-      testimonial: "The threat detection is incredibly accurate. We've prevented numerous harmful interactions since implementing Parental AI.",
-      rating: 5
-    }
-  ];
 
   const integrationPartners = [
-    { name: "Roblox", logo: "🎮" },
-    { name: "Snapchat", logo: "👻" },
-    { name: "Minecraft", logo: "⛏️" },
-    { name: "Discord", logo: "💬" },
-    { name: "Fortnite", logo: "🏆" },
-    { name: "TikTok", logo: "🎵" }
+    { name: "Gaming", logo: "🎮" },
+    { name: "Social Media", logo: "👻" },
+    { name: "Messaging Platforms", logo: "💬" },
+    { name: "School Systems", logo: "🏆" },
   ];
 
   return (
     <div className="min-h-screen bg-[#0D1B2A] text-white">
-      {/* Enhanced Header */}
-      <header className="p-6 flex justify-between items-center shadow-md bg-[#0D1B2A] border-b border-slate-800 sticky top-0 z-50">
-        <div className="flex items-center space-x-2">
-          <img src="/cirvia-logo.png" alt="Cirvia Logo" className="h-10 w-auto" />
-        </div>
-        <nav className="hidden md:flex space-x-6">
-          <a href="#about" className="hover:underline text-slate-200 transition-colors">About</a>
-          <a href="#product" className="hover:underline text-slate-200 transition-colors">Parental AI</a>
-          <a href="#how-it-works" className="hover:underline text-slate-200 transition-colors">How It Works</a>
-          <a href="#pricing" className="hover:underline text-slate-200 transition-colors">Pricing</a>
-          <a href="https://docs.cirvia.co" target="_blank" rel="noopener noreferrer" className="hover:underline text-slate-200 transition-colors flex items-center">
-            Documentation <ExternalLink className="ml-1 h-4 w-4" />
-          </a>
-          <a href="#contact" className="hover:underline text-slate-200 transition-colors">Contact</a>
-        </nav>
-        <div className="flex space-x-3">
-          <a href="https://cirvia.vercel.app" target="_blank" rel="noopener noreferrer" className="bg-slate-700 hover:bg-slate-600 text-white px-4 py-2 rounded-lg transition-colors flex items-center">
-            Dashboard <ExternalLink className="ml-1 h-4 w-4" />
-          </a>
-          <button className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
-            Get Started
-          </button>
-        </div>
-      </header>
+      <Header />
 
       {/* Hero Section */}
       <section className="py-20 text-center px-4 md:px-20">
@@ -303,99 +257,6 @@ export default function EnhancedCirviaLandingPage() {
         </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-white py-16 px-4 md:px-20">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-[#0D1B2A] mb-6">What Our Users Say</h2>
-          <p className="text-xl text-gray-700">
-            Hear from parents and platform developers who trust Parental AI.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <div key={index} className="bg-gray-50 rounded-lg p-6 shadow-md">
-              <div className="flex mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="h-5 w-5 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <p className="text-gray-700 mb-4 italic">"{testimonial.testimonial}"</p>
-              <div>
-                <p className="font-semibold text-[#0D1B2A]">{testimonial.name}</p>
-                <p className="text-sm text-gray-600">{testimonial.role}, {testimonial.company}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Pricing Section */}
-      <section id="pricing" className="bg-gray-50 py-16 px-4 md:px-20">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-[#0D1B2A] mb-6">Simple, Transparent Pricing</h2>
-          <p className="text-xl text-gray-700">
-            Choose the plan that fits your needs. All plans include 24/7 support and regular updates.
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Starter Plan */}
-          <div className="bg-white rounded-lg shadow-md p-8 border">
-            <h3 className="text-2xl font-bold text-[#0D1B2A] mb-4">Starter</h3>
-            <div className="text-4xl font-bold text-[#0D1B2A] mb-6">
-              $99<span className="text-lg font-normal text-gray-600">/month</span>
-            </div>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Up to 1,000 users</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Real-time threat detection</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Basic dashboard</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Email support</li>
-            </ul>
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-colors">
-              Get Started
-            </button>
-          </div>
-
-          {/* Professional Plan */}
-          <div className="bg-white rounded-lg shadow-xl p-8 border-2 border-blue-500 relative">
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 rounded-full text-sm font-semibold">
-              Most Popular
-            </div>
-            <h3 className="text-2xl font-bold text-[#0D1B2A] mb-4">Professional</h3>
-            <div className="text-4xl font-bold text-[#0D1B2A] mb-6">
-              $299<span className="text-lg font-normal text-gray-600">/month</span>
-            </div>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Up to 10,000 users</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Advanced AI protection</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Full analytics dashboard</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Priority support</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Custom integrations</li>
-            </ul>
-            <button className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition-colors">
-              Get Started
-            </button>
-          </div>
-
-          {/* Enterprise Plan */}
-          <div className="bg-white rounded-lg shadow-md p-8 border">
-            <h3 className="text-2xl font-bold text-[#0D1B2A] mb-4">Enterprise</h3>
-            <div className="text-4xl font-bold text-[#0D1B2A] mb-6">
-              Custom<span className="text-lg font-normal text-gray-600"> pricing</span>
-            </div>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Unlimited users</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />White-label solution</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Dedicated support</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />SLA guarantee</li>
-              <li className="flex items-center"><CheckCircle className="h-5 w-5 text-green-500 mr-2" />Custom features</li>
-            </ul>
-            <button className="w-full bg-gray-800 hover:bg-gray-900 text-white py-3 rounded-lg transition-colors">
-              Contact Sales
-            </button>
-          </div>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="bg-white py-16 px-4 md:px-20">
         <div className="text-center mb-12">
@@ -534,13 +395,7 @@ export default function EnhancedCirviaLandingPage() {
                   📚 Documentation & API Reference <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
                 <a href="https://cirvia.vercel.app" target="_blank" rel="noopener noreferrer" className="block text-blue-600 hover:text-blue-800 transition-colors flex items-center">
-                  🔧 Developer Dashboard <ExternalLink className="ml-2 h-4 w-4" />
-                </a>
-                <a href="#" className="block text-blue-600 hover:text-blue-800 transition-colors">
-                  🛠️ Integration Guide
-                </a>
-                <a href="#" className="block text-blue-600 hover:text-blue-800 transition-colors">
-                  📊 Case Studies
+                  🔧 Dashboard <ExternalLink className="ml-2 h-4 w-4" />
                 </a>
               </div>
             </div>
@@ -548,81 +403,7 @@ export default function EnhancedCirviaLandingPage() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-[#0D1B2A] text-white py-12 px-4 md:px-20">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <img src="/cirvia-logo.png" alt="Cirvia Logo" className="h-12 w-auto mb-4" />
-              <p className="text-slate-300 mb-4">
-                Empowering parents with complete visibility and COPPA-compliant protection for their children's digital interactions.
-              </p>
-              <div className="flex space-x-4">
-                <a href="#" className="text-slate-300 hover:text-white transition-colors">
-                  <span className="sr-only">Twitter</span>
-                  🐦
-                </a>
-                <a href="#" className="text-slate-300 hover:text-white transition-colors">
-                  <span className="sr-only">LinkedIn</span>
-                  💼
-                </a>
-                <a href="#" className="text-slate-300 hover:text-white transition-colors">
-                  <span className="sr-only">GitHub</span>
-                  💻
-                </a>
-              </div>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Product</h4>
-              <ul className="space-y-2">
-                <li><a href="#product" className="text-slate-300 hover:text-white transition-colors">Parental AI</a></li>
-                <li><a href="#how-it-works" className="text-slate-300 hover:text-white transition-colors">How It Works</a></li>
-                <li><a href="#pricing" className="text-slate-300 hover:text-white transition-colors">Pricing</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Integrations</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Resources</h4>
-              <ul className="space-y-2">
-                <li><a href="https://docs.cirvia.co" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors">Documentation</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">API Reference</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Case Studies</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Blog</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">About Us</a></li>
-                <li><a href="#contact" className="text-slate-300 hover:text-white transition-colors">Contact</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Privacy Policy</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">Terms of Service</a></li>
-                <li><a href="#" className="text-slate-300 hover:text-white transition-colors">COPPA Compliance</a></li>
-              </ul>
-            </div>
-          </div>
-
-          <div className="border-t border-slate-800 mt-8 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-slate-300 text-sm">
-              © 2025 Cirvia. All rights reserved. COPPA & CIPRA Compliant.
-            </p>
-            <div className="flex space-x-6 mt-4 md:mt-0">
-              <a href="https://cirvia.vercel.app" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors text-sm">
-                Dashboard
-              </a>
-              <a href="https://docs.cirvia.co" target="_blank" rel="noopener noreferrer" className="text-slate-300 hover:text-white transition-colors text-sm">
-                Documentation
-              </a>
-              <a href="#contact" className="text-slate-300 hover:text-white transition-colors text-sm">
-                Support
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
