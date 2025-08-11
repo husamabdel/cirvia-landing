@@ -154,11 +154,11 @@ const Header = () => {
           <nav className="space-y-6 mb-8">
             {/* Pure Link for About - should definitely work */}
             <Link 
-              to="/about" 
+              to="/products" 
               onClick={closeMobileMenu}
               className="block text-slate-200 hover:text-white transition-colors text-lg"
             >
-              About
+              Products
             </Link>
 
             <Link 
